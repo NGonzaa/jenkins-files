@@ -1,0 +1,19 @@
+pipeline {
+   agent any
+
+   parameters {
+       string(defaultValue: "App Deployment", description: "Enter a name for the deployment.", name: "deploymentName")
+       choice(choices: ["EU-WEST-2A", "EU-WEST-2B", "EU-WEST-2C"], description: "Choose the Availability Zone for the deployment.", name: "availabilityZone")
+       booleanParam(defaultValue: false, description: "Confirm deployment.", name: "confirmDeployment")
+   }
+
+   stages {
+       stage("Demo"){
+           steps {
+               echo "deploymentName is set to ${params.deploymentName}"
+               echo "availabilityZone is set to ${params.availabilityZone}"
+               echo "confirmDeployment is set to ${params.confirmDeployment}"
+           }
+       }
+   }
+}
